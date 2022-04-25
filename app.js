@@ -1,5 +1,4 @@
 const express = require('express')
-const cron = require("node-cron")
 
 const controlid_service = require('./services/controlid_service')
 
@@ -8,12 +7,22 @@ const port = 3000
 
 app.use(express.json()) 
 
-//cron.schedule("*/5 * * * * *", () => controlid_service.run());
+app.post('/api/notifications/dao', (req, res) => {
 
-app.post('/api/notifications/catra_event', (req, res) => {
-  console.log(req.body)
-  res.send('ok!')
-})
+  // console.log('BODY')
+
+  // console.log(req.body)
+
+  // console.log('OBJECT_CHANGES')
+
+  // console.log(req.body.object_changes)
+
+  // console.log('VALUES')
+
+  console.log(req.body.object_changes[0].values)
+  
+  res.send('Simulação')
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
